@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/table.css}" />
+</head>
+<body>
+    <div class="greeting-box">
+        <h1>Login</h1>
+        <p>Masukkan ID dan Password untuk akses account.</p>
+    </div>
+
+    <div class="first-box">
+        <h2>Login</h2>
+        <form th:action="@{/pekerja/login}" method="post">
+            <div class="form-group">
+                <label for="id" class="form-label">ID</label>
+                <input type="number" id="id" name="id" required class="form-control" />
+            </div>
+            
+            <div class="form-group">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" id="password" name="password" required class="form-control" />
+            </div>
+
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+    </div>
+</body>
+</html>

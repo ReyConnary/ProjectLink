@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pelamar Data</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/table.css}" />
+</head>
+<body>
+    <div class="container">
+        <h1>Pelamar Data Viewer</h1>
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nama</th>
+                    <th>Alamat</th>
+                    <th>Email</th>
+                    <th>No Telp</th>
+                    <th>Posisi Lamar</th>
+                    <th>Pengalaman Kerja</th>
+                </tr>
+            </thead>
+            <tbody th:each="pelamar : ${PelList}">
+                <tr>
+                    <td th:text="${pelamar.IDPelamar}"></td>
+                    <td th:text="${pelamar.Nama}"></td>
+                    <td th:text="${pelamar.Alamat}"></td>
+                    <td th:text="${pelamar.Email}"></td>
+                    <td th:text="${pelamar.noTelp}"></td>
+                    <td th:text="${pelamar.posisi_lamar}"></td>
+                    <td th:text="${pelamar.pengalaman_kerja}"></td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <a href="login">
+            <h2>Kembali</h2>
+        </a>
+    </div>
+</body>
+</html>

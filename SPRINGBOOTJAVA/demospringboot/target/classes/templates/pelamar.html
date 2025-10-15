@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pelamar Page</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/table.css}" />
+</head>
+<body>
+
+    <div class="greeting-box">
+        <h1>Welcome to the Recruitment Page</h1>
+        <p>We are excited to have you here! Scroll down to submit your details and apply for the position you are interested in.</p>
+    </div>
+
+    
+    <div class="second-box">
+        <div id="feedback-form">
+            <h2 class="header">Submit your data</h2>
+            <form th:action="@{/pelamar/submit/{id}(id=${PelRec!= null ? PelRec.getIDPelamar() : 0})}" method="post" th:object="${PelInfo}" class="form-group">
+                
+                <!-- ID -->
+                <label for="id" class="form-label">ID</label>
+                <input type="number" id="id" name="id" th:value="${PelRec != null ? PelRec.getIDPelamar() : 0}" readonly />
+
+                <!-- Nama -->
+                <label for="name" class="form-label">Name</label>
+                <input type="text" id="name" name="nama" th:value="${PelRec?.Nama}" required />
+
+                <!-- Posisi Lamar -->
+                <label for="posisi_lamar" class="form-label">Posisi Lamar</label>
+                <input type="text" id="posisi_lamar" name="posisi_lamar" th:value="${PelRec?.getPosisi_lamar()}" required />
+
+                <!-- Pengalaman Kerja -->
+                <label for="pengalaman_kerja" class="form-label">Pengalaman Kerja</label>
+                <input type="text" id="pengalaman_kerja" name="pengalaman_kerja" th:value="${PelRec?.getPengalaman_kerja()}" required />
+
+                <!-- Alamat -->
+                <label for="alamat" class="form-label">Alamat</label>
+                <input type="text" id="alamat" name="alamat" th:value="${PelRec?.getAlamat()}" required />
+
+                <!-- NoTelp -->
+                <label for="noTelp" class="form-label">No Telp</label>
+                <input type="text" id="noTelp" name="noTelp" th:value="${PelRec?.getNoTelp()}" required />
+
+                <!-- Email -->
+                <label for="email" class="form-label">Email</label>
+                <input type="email" id="email" name="email" th:value="${PelRec?.getEmail()}" required />
+
+                <button type="submit" class="btn btn-primary" name="add">Add</button>
+            </form>
+        </div>
+    </div>
+    
+    
+    <form th:action="@{/pelamar/submit/complaint/{id}(id=${PelRec != null ? PelRec.getIDPelamar() : 0})}" method="post">
+        <label for="complaint" class="form-label">Complaint</label>
+        <textarea id="complaint" name="complaint" rows="4" cols="50" required></textarea>
+        <button type="submit" class="btn btn-warning">Submit Complaint</button>
+    </form>
+
+</body>
+</html>

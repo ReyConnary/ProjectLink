@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pelamar Page</title>
+    <style>
+        table {
+    width: 80%;
+    margin: 30px auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+table th, table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+table td {
+    font-size: 14px;
+}
+
+a {
+    text-decoration: none;
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #45a049;
+}
+    </style>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/table.css}" />
+</head>
+<body>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID Keputusan</th>
+                <th>Keputusan</th>
+                <th>Tanggal Keputusan</th>
+                <th>ID Pelamar</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr th:each="seleksi : ${SelList}">
+                <td th:text="${seleksi.kodeSeleksi}"></td>
+                <td th:text="${seleksi.keputusan}"></td>
+                <td th:text="${seleksi.tanggalKeputusan}"></td>
+                <td th:text="${seleksi.iDPelamar}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    
+    <div class="second-box">
+        <div id="feedback-form">
+            <h2 class="header">Submit data keputusan</h2>
+            <form th:action="@{/Seleksi/submit/{id}(id=${SelRec!= null ? SelRec.getKodeSeleksi() : 0})}" method="post" th:object="${SelInfo}" class="form-group">
+                
+                <!-- ID -->
+                <label for="id" class="form-label">ID</label>
+                <input type="number" id="KodeSeleksi" name="id" th:value="${SelRec != null ? SelRec.getKodeSeleksi() : 0}" readonly />
+
+                <!-- Keputusan -->
+                <label for="keputusan" class="form-label">Keputusan</label>
+                <input type="text" id="keputusan" name="keputusan" th:value="${SelRec?.keputusan}" required />
+
+                <!-- tanggal keputusan -->
+                <label for="tanggal_keputusan" class="form-label">Tanggal Keputusan</label>
+                <input type="date" id="tanggal_keputusan" name="tanggalKeputusan" th:value="${SelRec?.tanggalKeputusan}" required />
+
+                
+                <!-- ID Pelamar -->
+                <label for="IDPelamar" class="form-label">ID Pelamar</label>
+                <input type="text" id="IDPelamar" name="IDPelamar" th:value="${SelRec?.getIDPelamar()}" required />
+
+                
+                <button type="submit" class="btn btn-primary" name="add">Add</button>
+            </form>
+        </div>
+    </div>
+
+    <br>
+    <a href="pekerja">
+        <h2>Go back</h2>
+    </a>
+
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Interview</title>
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+    color: #333;
+}
+
+
+h1 {
+    text-align: center;
+    font-size: 2.5em;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+table th {
+    background-color: #007bff;
+    color: white;
+}
+
+table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+table tr:hover {
+    background-color: #ddd;
+}
+
+
+@media (max-width: 768px) {
+    table {
+        font-size: 14px;
+    }
+
+    table th, table td {
+        padding: 8px;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+    <h1>Histori Undangan Interview</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Kode Interview</th>
+                <th>Lokasi</th>
+                <th>Tanggal</th>
+                <th>Waktu</th>
+                <th>ID Pekerja</th>
+            </tr>
+        </thead>
+        <tbody>
+
+
+            
+
+            <tr th:each="undangan : ${undanganInterviews}">
+                <td th:text="${undangan.kodeInterview}"></td>
+                <td th:text="${undangan.lokasiInterview}"></td>
+                <td th:text="${undangan.tanggalInterview}"></td>
+                <td th:text="${undangan.waktuInterview}"></td>
+                <td th:text="${undangan.IDPekerja}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <br>
+    <br>
+    <h1>Histori Interview</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>No Interview</th>
+                <th>ID Pelamar</th>
+                <th>ID Pekerja</th>
+                <th>Catatan Interview</th>
+                <th>Hasil Interview</th>
+                <th>Tanggal Interview</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="interview : ${interviews}">
+                <td th:text="${interview.NoInterview}"></td>
+                <td th:text="${interview.IDPelamar}"></td>
+                <td th:text="${interview.IDPekerja}"></td>
+                <td th:text="${interview.catatan_interview}"></td>
+                <td th:text="${interview.hasil_interview}"></td>
+                <td th:text="${interview.tanggal_interview}"></td>
+            </tr>            
+        </tbody>
+    </table>
+
+
+
+
+    <br>
+    <a href="pekerja">
+        <h2>Go back</h2>
+    </a>
+
+</body>
+</html>
